@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/viteNote/'
+  base: '/viteNote/',
   title: "ZackYJ's DocSite",
   description: "技术文档,学习资料",
   themeConfig: {
