@@ -1,35 +1,31 @@
 import { defineConfig } from 'vitepress'
+import { withSidebar } from 'vitepress-sidebar'
 
-// https://vitepress.dev/reference/site-config
-export default defineConfig({
+// VitePress 原始配置（vitePressOptions）
+const vitePressOptions = {
   base: '/viteNote/',
   title: "ZackYJ's DocSite",
   description: "技术文档,学习资料",
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Docs', link: '/' },
-      { text: 'Notes', link: '/' },
+      { text: 'Notes', link: '/' }
     ],
-    sidebar: [
-      {
-        text: '文档',
-        collapsed: true,
-        items: [
-          { text: 'Langchain', link: '/docs/04-LangChain' }
-        ]
-      },
-      {
-        text: '笔记',
-        collapsed: true,
-        items: [
-          { text: 'Langchain', link: '/docs/04-LangChain' }
-        ]
-      }
-    ],
-
+    sidebar: [], // placeholder，由 vitepress-sidebar 自动填充
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
   }
-})
+}
+
+// vitepress-sidebar 配置（vitePressSidebarOptions）
+const vitePressSidebarOptions = {
+  documentRootPath: 'docs', // ⚠️ 指向你的 Markdown 根目录（通常是 'docs' 或 '.'）
+  collapsed: false,
+  capitalizeFirst: true
+}
+
+// 最终导出自动集成 sidebar 的配置
+export default defineConfig(
+  withSidebar(vitePressOptions, vitePressSidebarOptions)
+)
